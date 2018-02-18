@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>More Components!</title>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <style>
+      #container {
+        padding: 50px;
+        background-color: #FFF;
+                 }
+    </style>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var scalePixels = function (xstr, f) {
+        const x = parseInt(f * parseFloat(xstr.split("p")[0]));
+        return String(x) + "px";
+                                           };
+
+      var Square = React.createClass({
+        \render: function() {
+          var squareStyle = {
+            height: scalePixels(this.props.height, 0.75),
+            backgroundColor: this.props.color,
+          };
+          return (
+            <div style={squareStyle}>
+            </div>
+          );
+        }
+                                     });
+  var Circle = React.createClass({
+    render: function() {
+      var circleStyle = {
+        border: 10,
+        height: scalePixels(this.props.height, 0.75),
+        backgroundColor: this.props.color,
+        borderRadius: "50%",
+      };
+      return (
+        <div style={circleStyle}>
+        </div>
+      );
+    }
+                                 });
+  var Label = React.createClass({
+    render: function() {
+      var labelStyle = {
+        fontFamily: "sans-serif",
+        fontWeight: "bold",
+        padding: 13,
+        margin: 0
+      };
+
+      return (
+        <p style={labelStyle}>{this.props.color}</p>
+      );
+    }
+                                });
+
+  var Card = React.createClass({
+    render: function () {
+      var cardStyle = {
+        height: this.props.height,
+        width: this.props.width,
+        padding: 0,
+        backgroundColor: "#FFF",
+        WebkitFilter: "drop-shadow(0px 0px 5px #666)",
+        filter: "drop-shadow(0px 0px 5px #666)",
+        display: "inline-block",
+      };
+
+      return (
+        <div style={cardStyle}>
+          <Circle {...this.props}/>
+          <Label {...this.props}/>
+        </div>
+      );
+    }
+                               });
+
+  var colors = [
+  "#393E41",
+  "#E94F37",
+  "#1C89BF",
+  "#A1D363",
+  "#85FFC7",
+  "#297373",
+  "#FF8552",
+  "#A40E4C"
+  ];
+  
+  var cardHeight = "400px";
+  var cardWidth  = scalePixels(cardHeight, 0.75);
+  var cards = [];
+  for (var i = 0; i < colors.length; i++) {
+    var c = colors[i];
+    cards.push(<Card color={c} height={cardHeight} width={cardWidth} key={i + c}/>);
+                                          };
+
+  var Counter = React.creatClass({
+    render: function() {
+      var textStyle = {
+        fontsize: 72,
+        fontFamily: "sans-serif",
+        color: "#333",
+        fontWeight: "bold"
+      };
+
+      return (
+        <div style={textStyle}>
+          {this.props.counter_value}
+        </div>
+      );
+    }
+                                 });
+
+  var CounterContainer = React.createClass({
+    getInitialState: function() {
+      return {
+        count: 0
+      };
+    };
+
+    render: function () {
+      var backgroundStyle = {
+        padding: 50,
+        backgroundColor: "#FFC53A",
+        width: 250,
+        height: 100,
+        borderRadius: 10,
+        textAlign: "center"
+      };
+      var buttonStyle = {
+        fontSize: "1em",
+        width: 30,
+        height: 30,
+        fontFamily: "sans-serif",
+        color: "#333",
+        fontWeight: "bold",
+        lineHeight: "3px"
+      };
+      return (
+        <div style={backgroundStyle}>
+          <Counter display={this.state.count}/>
+          <button style={buttonStyle}>+</button>button>
+        </div>
+      )
+    };
+                                           });
+
+  ReactDOM.render(
+  <div>
+    <h1>The world is a colorful place. Choose one to suit your mood.</h1>
+    {cards}
+  </div>,
+    document.querySelector("#container")
+  );
+
+</script>
+</body>
+
+</html>
