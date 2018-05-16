@@ -1,0 +1,3 @@
+#+TITLE: Learn React for front-end.
+
+React is interesting. I have to move fast, quickly beyond dumping code into HTML.

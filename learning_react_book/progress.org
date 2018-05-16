@@ -1,0 +1,10 @@
+#+TITLE: Web Development
+  Web development is really defined by the front-end. The back-end should be
+  independent of how it's computations are used. There are innumerable ways of
+  putting the back and front together, a bunch of philosophies out there. The
+  best way to learn is to develop a full system. Here we make another attempt.
+
+* Front End: React
+  Components are central to React. A web page is composed of components. Every
+  single unit is a component that is responsible for both what you see as well
+  as any interactions that it may be have with other components of the app.
