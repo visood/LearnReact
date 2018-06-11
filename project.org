@@ -1,3 +1,10 @@
 #+TITLE: Learn React for front-end.
 
 React is interesting. I have to move fast, quickly beyond dumping code into HTML.
+
+* TODO a circle that changes color every second.
+  SCHEDULED: <2018-06-12 Tue>
+  DEADLINE: <2018-06-13 Wed>
+* TODO create a UI with button to change colors of a circle.
+  SCHEDULED: <2018-06-13 Wed>
+  DEADLINE: <2018-06-15 Fri>
