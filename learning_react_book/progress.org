@@ -8,3 +8,27 @@
   Components are central to React. A web page is composed of components. Every
   single unit is a component that is responsible for both what you see as well
   as any interactions that it may be have with other components of the app.
+
+** Buttons
+   React has =SyntheticEvent= for DOM events, but not all DOM events have a
+   =SyntheticEvent= equivalent. If React does not recognize an event, you have
+   to use =addEventListener=.
+   #+BEGIN_SRC html
+   var Something = React.createClass({
+     handleMyEvent: function(e) {
+       //do something
+     },
+     componentDidMount: function()
+     {
+       window.addEventListener("someEvent", this.handleMyEvent);
+     },
+     componentWillUnmount: function() {
+       window.removeEventListener("someEvent", this.handleMyEvent);
+     },
+     render: function() {
+       return (
+         <div>Hello!</div>
+       );
+     }
+   });
+   #+END_SRC
