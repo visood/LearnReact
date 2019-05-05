@@ -6,6 +6,11 @@ While we follow books, we will refer to the Internet, and gather what we learn
 here. 
 * Concepts
   What concepts is /React/ based on? What is the theory behind the surface?
+** Components
+   One of /React/'s core ideas is to have the app's visual pieces be
+   self-contained and reusable. So HTML elements (as JSX) go with JavaScript
+   into the same component's code. 
+   So, specify element styling along side the HTML and the JavaScript.
 ** Reconciliation
    [[https://reactjs.org/docs/reconciliation.html][Reconciliation]] is a core concept.
    ~you don't have to worry about exactly what changes on every update.~
