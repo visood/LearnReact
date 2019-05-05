@@ -1,0 +1,36 @@
+#+TITLE: Learn React
+
+We learn react to be able to put a skin to an app.  A webpage is a clean medium
+to present information to the user. 
+While we follow books, we will refer to the Internet, and gather what we learn
+here. 
+* Concepts
+  What concepts is /React/ based on? What is the theory behind the surface?
+** Reconciliation
+   [[https://reactjs.org/docs/reconciliation.html][Reconciliation]] is a core concept.
+   ~you don't have to worry about exactly what changes on every update.~
+   React uses a an algorithm to compute the /diff/ between the webpage's states:
+   they have a /diffing/ algorithm.
+   Two assumptions that allow /React/ to reduce the complexity of its /diffing/
+   algorithm from $O(n^3)$ to $O(n)$:
+   1. Two elements of different types will produce different trees.
+   2. The developer can hint at which child elements may be stable across
+      different renders with a ~key~ prop.
+      
+** TODO :learn:webdev:react:
+   Continue to learning about Reconciliation
+   CREATED: <2019-05-05 So>
+* Tools
+  Tools that React provides.
+** Props
+  React passes /arguments/ to a component as /props/.
+  /Props/ can have children.
+
+*** Children 
+    A component's /props/ may have /children/, represented as
+    ~this.props.children~.  
+    
+    Errors
+    - Unique /key prop/ :: The error statement says
+         ~Each child in an array should have a unique "key" prop.~
+        

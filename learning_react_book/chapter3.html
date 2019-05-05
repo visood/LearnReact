@@ -22,30 +22,77 @@
         font-family: sans-serif;
         color: #0080a8;
       }
+      #button {
+        padding: 10px;
+        background-color: #D9AD20;
+      }
+      #button h1 {
+        font-size: 144px;
+        font-family: sans-serif;
+        color: #0080a8;
+      }
+      #button p {
+        padding: 10px;
+        background-color: #EDA;
+      }
     </style>
   </head>
 
   <body>
     <div id="container"></div>
+    <div id="button"></div>
     <script type="text/babel">
-     var destination =
-       document.querySelector(
-         "#container");
-     var batman =
-       React.createElement(
-         "h1", "null", "Barman");
-     var HelloWorld =
-       React.createClass({
-         render: function() {
-           return <p>Hello, {this.props.person}!</p>;
-         } });
-    ReactDOM.render(
-      <div>
-        <HelloWorld person="Bat Man"/>
-        <HelloWorld person="Super Man"/>
-        <HelloWorld person="Iron Man"/>
-      </div>,
-      destination);
+      var destination =
+        document.querySelector(
+        "#container");
+      var batman =
+        React.createElement(
+          "h1", "null", "Barman");
+      var HelloWorld =
+        React.createClass({
+          render: function() {
+            return <p>Hello, {this.props.person}!</p>;
+          } });
+      var Buttonated =
+        React.createClass({
+          render: function() {
+            return (
+              <div className="buttons">
+                {this.props.children.map(
+                  (label) => {
+                return (
+                 <div>
+                   <button type={this.props.behavior}>
+                     {label}
+                   </button>
+                   <br/>
+                 </div>);
+                  })}
+              </div>
+            );
+        } });
+
+      var container =
+        document.querySelector(
+          "#container");
+      var button =
+        document.querySelector(
+          "#button");
+      ReactDOM.render(
+        <div>
+          <HelloWorld person="Bat Man"/>
+          <HelloWorld person="Super Man"/>
+          <HelloWorld person="Iron Man"/>
+        </div>,
+        container);
+      ReactDOM.render(
+        <div>
+          <Buttonated behavior="Submit">
+            <p key="send_button">SEND DATA</p>
+            <p key="get_button">GET  DATA</p>
+          </Buttonated>
+        </div>,
+        button);
     </script>
   </body>
 </html>
