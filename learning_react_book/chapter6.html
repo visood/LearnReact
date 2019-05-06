@@ -1,0 +1,105 @@
+<! DOCTYPE html>
+<html>
+
+  <head>
+    <title>A simple  React template!</title>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <style>
+      #container {
+        padding: 50px;
+        background-color: #EEE;
+      }
+      #container h1 {
+        font-size: 144px;
+        font-family: sans-serif;
+        color: #0080a8;
+      }
+      #container p {
+        font-size: 40px;
+        font-family: sans-serif;
+        color: #0080a8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var container =
+        document.querySelector("#container");
+      var Display =
+        React.createClass({
+          render: function() {
+            return (
+              <div>
+                <p>Color {this.props.color}</p>
+                <p>Identifier {this.props.num}</p>
+                <p>Size {this.props.size}</p>
+              </div>
+            );
+          }
+        });
+      var Label =
+        React.createClass({
+          render: function() {
+            var labelStyle = {
+              fontFamily: "sans-serif",
+              fontWeight: "medium",
+              padding: 13,
+              margin: 0,
+              fontColor: "black"
+            };
+            return (
+              <div style={labelStyle}>
+                <p style={{color:"black"}}>Color {this.props.color}</p>
+                <p style={{color:"black"}}>Identifier {this.props.num}</p>
+                <p style={{color:"black"}}>Size {this.props.size}</p>
+              </div>
+            );
+          }
+        });
+      var ShirtImage =
+        React.createClass({
+          render: function() {
+            var shirtImageStyle = {
+              height: 140,
+              padding: 10,
+              backgroundColor: this.props.color
+            };
+            return (
+              <div style={shirtImageStyle}>
+              </div>
+            );
+          }
+        });
+      var Shirt =
+        React.createClass({
+          render: function() {
+            var shirtStyle = {
+              height: 200,
+              width: 150,
+              padding: 0,
+              backgroundColor: this.props.color,
+              WebkitFilter: "drop-shadow(0px 0px 5px #666)",
+              filter: "drop-shadow(0px 0px 5px #666)"
+            };
+            return (
+              <div style={shirtStyle}>
+                <ShirtImage {...this.props}/>
+                <Label {...this.props}/>
+              </div>
+            );
+          }
+        });
+      ReactDOM.render(
+        <div>
+          <Shirt color="steelblue" num="3.14" size="medium"/>
+        </div>,
+        container);
+    </script>
+
+  </body>
+</html>
