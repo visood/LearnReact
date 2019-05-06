@@ -1,0 +1,64 @@
+<! DOCTYPE html>
+<html>
+
+  <head>
+    <title>A simple  React template!</title>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <style>
+      #container {
+        padding: 50px;
+        background-color: #EEE;
+      }
+      #container h1 {
+        font-size: 144px;
+        font-family: sans-serif;
+        color: #0080a8;
+      }
+      #container p {
+        font-size: 80px;
+        font-family: sans-serif;
+        color: #0080a8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var Circle = React.createClass({
+        render: function() {
+          var circleStyle = {
+            padding: 10,
+            margin: 20,
+            display: "inline-block",
+            backgroundColor: this.props.bgColor,
+            borderRadius: "50%",
+            width: 100,
+            height: 100
+          };
+          return (
+            <div style={circleStyle}>
+            </div>
+          );
+        }
+      });
+     var colors = [
+       "#393E41", "#E94F37", "#1C89BF", "#A1D363",
+       "#85FFC7", "#297373", "#FF8552", "#A40E4C"];
+     var circles =
+       colors.map(
+         (c, i) => <Circle key={c + i} bgColor={c}/>);
+      var container =
+        document.querySelector("#container");
+      ReactDOM.render(
+        <div>
+          {circles}
+        </div>,
+        container
+      );
+    </script>
+  </body>
+</html>
