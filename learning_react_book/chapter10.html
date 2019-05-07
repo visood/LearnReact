@@ -1,0 +1,115 @@
+<! DOCTYPE html>
+<html>
+
+  <head>
+    <title>A simple  React template!</title>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <style>
+      #container {
+        padding: 50px;
+        background-color: #EEE;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var container =
+        document.querySelector("#container")
+      var Counter =
+        React.createClass({
+          render: function() {
+            var textStyle = {
+              fontSize: 72,
+              fontFamily: "sans-serif",
+              color: "#333",
+              fontWeight: "bold"
+            };
+            return (
+              <div style={textStyle}>
+                {this.props.display}
+              </div>
+            );
+          }
+        });
+      var CounterParent =
+        React.createClass({
+          getInitialState: function() {
+            return {
+              count: 0
+            };
+          },
+          componentDidMount: function() {
+            console.log(
+              "component mounted with counter value " +
+              this.state.count);
+          },
+          increment: function(event) {
+            var delta_count = 1;
+            if (event.shiftKey) {
+              delta_count = 10;
+            }
+            this.setState({
+              count: this.state.count + delta_count
+            });
+          },
+          reset: function(event) {
+            this.setState({
+              count: 0
+            });
+          },
+          render: function() {
+            var backgroundStyle = {
+              padding: 50,
+              backgroundColor: "FFC53A",
+              width: 250,
+              height: 120,
+              borderRadius: 10,
+              textAlign: "center"
+            };
+            var buttonStyle = {
+              height: 30,
+              fontFamily: "sans-serif",
+              fontWeight: "bold",
+              lineHeight: "3px"
+            };
+            var incrementButtonStyle = {
+              width: 30,
+              color: "#333",
+              fontSize: "1em",
+              ...buttonStyle
+              };
+            var resetButtonStyle = {
+              width: 80,
+              color: "#777",
+              fontSize: "1em",
+              ...buttonStyle
+            };
+            return (
+              <div style={backgroundStyle}>
+                <p>{this.props.count}</p>
+                <Counter display={this.state.count}/>
+                <button onClick={this.increment} style={incrementButtonStyle}>
+                  +
+                </button>
+                <br/>
+                <button onClick={this.reset} style={resetButtonStyle}>
+                  RESET
+                </button>
+              </div>
+            );
+          }
+        });
+      ReactDOM.render(
+        <div>
+          <CounterParent/>
+        </div>,
+        container       
+      );
+    </script>
+  </body>
+</html>
