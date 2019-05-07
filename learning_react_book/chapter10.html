@@ -36,6 +36,50 @@
             );
           }
         });
+     var commonButtonStyle = {
+       height: 30,
+       fontFamily: "sans-serif",
+       fontWeight: "bold",
+       lineHeight: "3px"
+     };
+     var IncrementButton =
+       React.createClass({
+         render: function() {
+           var incrementButtonStyle = {
+             width: 30,
+             color: "#333",
+             fontSize: "1em",
+             ...commonButtonStyle
+           };
+           return (
+             <button
+               onClick={this.props.clickHandler}
+               style={incrementButtonStyle}
+             >
+               +
+             </button>
+           );
+        }
+       });
+     var ResetButton =
+       React.createClass({
+         render: function() {
+           var resetButtonStyle = {
+             width: 80,
+             color: "#777",
+             fontSize: "1em",
+             ...commonButtonStyle
+           };
+           return (
+             <button
+               onClick={this.props.clickHandler}
+               style={resetButtonStyle}
+             >
+               RESET
+             </button>
+             );
+            }
+          });
       var CounterParent =
         React.createClass({
           getInitialState: function() {
@@ -71,35 +115,13 @@
               borderRadius: 10,
               textAlign: "center"
             };
-            var buttonStyle = {
-              height: 30,
-              fontFamily: "sans-serif",
-              fontWeight: "bold",
-              lineHeight: "3px"
-            };
-            var incrementButtonStyle = {
-              width: 30,
-              color: "#333",
-              fontSize: "1em",
-              ...buttonStyle
-              };
-            var resetButtonStyle = {
-              width: 80,
-              color: "#777",
-              fontSize: "1em",
-              ...buttonStyle
-            };
             return (
               <div style={backgroundStyle}>
                 <p>{this.props.count}</p>
                 <Counter display={this.state.count}/>
-                <button onClick={this.increment} style={incrementButtonStyle}>
-                  +
-                </button>
+                <IncrementButton clickHandler={this.increment}/>
                 <br/>
-                <button onClick={this.reset} style={resetButtonStyle}>
-                  RESET
-                </button>
+                <ResetButton clickHandler={this.reset}/>
               </div>
             );
           }
