@@ -25,6 +25,9 @@ here.
 ** TODO :learn:webdev:react:
    Continue to learning about Reconciliation
    CREATED: <2019-05-05 So>
+** Component Lifecycle
+   Components are mounted, mutated, changed, unmounted. React provides a rich
+   API to specify how to carry out these functions.
 * Tools
   Tools that React provides.
 ** Props

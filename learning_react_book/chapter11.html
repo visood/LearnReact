@@ -1,0 +1,180 @@
+<! DOCTYPE html>
+<html>
+
+  <head>
+    <title>A simple  React template!</title>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <style>
+      #container {
+        padding: 50px;
+        background-color: #EEE;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var container =
+        document.querySelector("#container")
+      var Counter =
+        React.createClass({
+          render: function() {
+            var textStyle = {
+              fontSize: 72,
+              fontFamily: "sans-serif",
+              color: "#333",
+              fontWeight: "bold"
+            };
+            return (
+              <div style={textStyle}>
+                {this.props.display}
+              </div>
+            );
+          }
+        });
+     var commonButtonStyle = {
+       height: 30,
+       fontFamily: "sans-serif",
+       fontWeight: "bold",
+       lineHeight: "3px"
+     };
+     var IncrementButton =
+       React.createClass({
+         render: function() {
+           var incrementButtonStyle = {
+             width: 30,
+             color: "#333",
+             fontSize: "1em",
+             ...commonButtonStyle
+           };
+           return (
+             <button
+               onClick={this.props.clickHandler}
+               style={incrementButtonStyle}
+             >
+               +
+             </button>
+           );
+        }
+       });
+     var ResetButton =
+       React.createClass({
+         render: function() {
+           var resetButtonStyle = {
+             width: 80,
+             color: "#777",
+             fontSize: "1em",
+             ...commonButtonStyle
+           };
+           return (
+             <button
+               onClick={this.props.clickHandler}
+               style={resetButtonStyle}
+             >
+               RESET
+             </button>
+             );
+            }
+          });
+      var CounterParent =
+        React.createClass({
+          getInitialState: function() {
+            return {
+              count: 0
+            };
+          },
+          increment: function(event) {
+            var delta_count = 1;
+            if (event.shiftKey) {
+              delta_count = 10;
+            }
+            this.setState({
+              count: this.state.count + delta_count
+            });
+          },
+          reset: function(event) {
+            this.setState({
+              count: 0
+            });
+          },
+          componentWillUpdate: function(newProps, newState) {
+            console.log(
+             "componentWillUpdate: Component is about to update");
+            console.log(
+              "componentWillUpdate: New count value: "+
+              newState.count);
+          },
+          componentDidUpdate: function(currentProps, currentState) {
+            console.log(
+              "componentDidUpdate: Component just updated");
+             console.log(
+             "componentDidUpdate: Component updated with counter value " +
+             this.state.count);
+          },
+          componentWillMount: function() {
+            console.log(
+              "componentWillMount: Component is about to mount");
+          },
+          componentDidMount: function() {
+            console.log(
+              "componentDidMount: Component just mounted");
+          },
+          componentWillUnmount: function() {
+            console.log(
+              "componentWillUnmount: Component will soon unmount");
+          },
+          shouldComponentUpdate: function(newProps, newState) {
+            console.log(
+              "shouldComponentUpdate: Given new props and state");
+            console.log(
+             "shouldComponentUpdate: decide if component should update");
+            if (newState.count < 5) {
+             console.log("shouldComponentUpdate: YES");
+             return true;
+            } else {
+             console.log(
+               "shouldComponentUpdate: NO");
+              ReactDOM.unmountComponentAtNode(
+                container);
+              console.log(
+                "shouldComponentUpdate: Instead we have  removed it!");
+              return false;
+            }
+          },
+          componentWillReceiveProps: function(newProps) {
+            console.log(
+              "componentWillReceiveProps: Component will get new props!");
+          },
+          render: function() {
+            var backgroundStyle = {
+              padding: 50,
+              backgroundColor: "FFC53A",
+              width: 250,
+              height: 120,
+              borderRadius: 10,
+              textAlign: "center"
+            };
+            return (
+              <div style={backgroundStyle}>
+                <p>{this.props.count}</p>
+                <Counter display={this.state.count}/>
+                <IncrementButton clickHandler={this.increment}/>
+                <br/>
+                <ResetButton clickHandler={this.reset}/>
+              </div>
+            );
+          }
+        });
+      ReactDOM.render(
+        <div>
+          <CounterParent/>
+        </div>,
+        container       
+      );
+    </script>
+  </body>
+</html>
