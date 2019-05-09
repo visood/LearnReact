@@ -42,3 +42,24 @@ here.
     - Unique /key prop/ :: The error statement says
          ~Each child in an array should have a unique "key" prop.~
         
+* NPM
+  1. install node
+  2. in the project directory: ~npm init~
+  3. install React Dependencies: ~npm install react react-dom --save~
+  4. install webpack: ~npm install webpack --save~
+  5. configure webpack in ~webpack.config.js~ at project root
+  6. install babel
+     ~npm install babel-loader babel-preset-es2015 babel-preset-react --save~
+     Things keep changing, as of babel 7
+     ~npm install @babel/core @babel/preset-env --save-dev ~
+  7. modify ~package.json~ to configure Babel
+  8. tell webpack about Babel --- by adding ~module~ entry to ~webpack.config.js~
+  9. build: ~./node_modules/.bin/webpack~
+** Bug fixing
+   You will need to fix for constant API changes.
+   1. React has changed 
+      #+begin_src
+      npm install create-react-class --save~
+      var createReactClass = require("create-react-class");
+      #+end_src
+   2. instead of React.createClass({..., you'll have createReactClass({....
